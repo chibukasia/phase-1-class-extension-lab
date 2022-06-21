@@ -9,22 +9,39 @@ class Polygon {
     }
 
     get perimeter(){
-        this.array.reduce((accum, curr)=>{
-            accum +=curr;
-        }, 0)
+         return this.array.reduce((accum, curr)=>{
+            return accum += curr;
+        })
+        
     }
 }
 
 class Triangle extends Polygon{
     get isValid(){
-        if ((this.array[1] + this.array[2]) > this.array[3]||
-            (this.array[2] + this.array[3]) > this.array[1]||
-            (this.array[3] + this.array[1]) > this.array[2]
+        if ((this.array[0] + this.array[1]) > this.array[2]&&
+            (this.array[1] + this.array[2]) > this.array[0]&&
+            (this.array[2] + this.array[0]) > this.array[1]
 
         ){
             return true;
         }else{
             return false;
         }
+    }
+}
+
+class Square extends Polygon{
+    get isValid(){
+        if (this.array[0]===this.array[1] &&
+            this.array[1]===this.array[2] &&
+            this.array[2]===this.array[3]){
+                return true;
+            }else{
+                return false;
+            }
+    }
+
+    get area(){
+        return this.array[0] * this.array[2]
     }
 }
